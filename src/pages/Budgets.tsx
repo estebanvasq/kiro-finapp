@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useCategories } from '@/context/CategoryContext';
 import { useBudgets } from '@/context/BudgetContext';
-import { formatCurrency } from '@/utils/formatters';
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter';
 import { AlertCircle, CheckCircle, Plus, Target, TrendingDown } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +12,7 @@ export default function Budgets() {
   const { categories } = useCategories();
   const { budgets } = useBudgets();
   const { t } = useTranslation();
+  const { format } = useCurrencyFormatter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const budgetData = useMemo(() => {
@@ -101,14 +102,14 @@ export default function Budgets() {
                     <TrendingDown className="h-4 w-4" />
                     {t('budgets.spent')}
                   </span>
-                  <span className="font-semibold dark:text-white">{formatCurrency(budget.spent)}</span>
+                  <span className="font-semibold dark:text-white">{format(budget.spent)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400 flex items-center gap-1">
                     <Target className="h-4 w-4" />
                     {t('budgets.limit')}
                   </span>
-                  <span className="font-semibold dark:text-white">{formatCurrency(budget.limit)}</span>
+                  <span className="font-semibold dark:text-white">{format(budget.limit)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">{t('budgets.remaining')}</span>
@@ -117,7 +118,7 @@ export default function Budgets() {
                       budget.remaining < 0 ? 'text-red-600 dark:text-red-400' : 'text-green-600 dark:text-green-400'
                     }`}
                   >
-                    {formatCurrency(Math.abs(budget.remaining))}
+                    {format(Math.abs(budget.remaining))}
                   </span>
                 </div>
 

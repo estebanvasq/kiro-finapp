@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { mockUser } from '@/data/mockData';
-import { User, Bell, Shield, Database, Tag, Plus, Trash2, Globe, Mail, UserCircle, Lock, Key } from 'lucide-react';
+import { User, Bell, Shield, Database, Tag, Plus, Trash2, Globe, Mail, UserCircle, Lock, Key, DollarSign } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useCategories } from '@/context/CategoryContext';
 import NewCategoryModal from '@/components/NewCategoryModal';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/context/ThemeContext';
+import { useCurrency, CURRENCIES } from '@/context/CurrencyContext';
 import { getCategoryName } from '@/utils/categoryHelpers';
 
 export default function Settings() {
@@ -13,6 +14,7 @@ export default function Settings() {
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
+  const { currency, setCurrency } = useCurrency();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -101,6 +103,31 @@ export default function Settings() {
             >
               {t('settings.dark')}
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Currency Settings */}
+      <div className="card">
+        <div className="flex items-center space-x-4 mb-6">
+          <DollarSign className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{t('settings.currency')}</h2>
+        </div>
+        <div className="space-y-4">
+          <div className="flex flex-wrap gap-3">
+            {Object.values(CURRENCIES).map((curr) => (
+              <button
+                key={curr.code}
+                onClick={() => setCurrency(curr.code)}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                  currency === curr.code
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                }`}
+              >
+                {curr.symbol} {curr.name}
+              </button>
+            ))}
           </div>
         </div>
       </div>

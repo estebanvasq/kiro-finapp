@@ -33,3 +33,12 @@ export interface User {
   email: string;
   avatar?: string;
 }
+
+export type Currency = 'EUR' | 'USD';
+
+export interface CurrencyInfo {
+  code: Currency;
+  symbol: string;
+  locale: string;
+  name: string;
+}

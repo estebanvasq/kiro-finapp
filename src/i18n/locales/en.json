@@ -55,6 +55,7 @@
     "theme": "Theme",
     "light": "Light",
     "dark": "Dark",
+    "currency": "Currency",
     "userProfile": "User Profile",
     "name": "Name",
     "email": "Email",

@@ -1,5 +1,6 @@
 import { Transaction } from '@/types';
-import { formatCurrency, formatShortDate } from '@/utils/formatters';
+import { formatShortDate } from '@/utils/formatters';
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,7 @@ export default function TransactionList({ transactions, limit }: TransactionList
   const displayTransactions = limit ? transactions.slice(0, limit) : transactions;
   const { t } = useTranslation();
   const { categories } = useCategories();
+  const { format } = useCurrencyFormatter();
 
   const getCategoryDisplayName = (categoryName: string) => {
     const category = categories.find(c => c.name === categoryName);
@@ -75,7 +77,7 @@ export default function TransactionList({ transactions, limit }: TransactionList
               }`}
             >
               {transaction.type === 'income' ? '+' : '-'}
-              {formatCurrency(transaction.amount)}
+              {format(transaction.amount)}
             </p>
           </div>
         </div>
