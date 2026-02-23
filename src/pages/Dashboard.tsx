@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { mockTransactions } from '@/data/mockData';
 import { useCategories } from '@/context/CategoryContext';
 import { useTheme } from '@/context/ThemeContext';
+import { useCurrencyFormatter } from '@/hooks/useCurrencyFormatter';
 import StatCard from '@/components/StatCard';
 import TransactionList from '@/components/TransactionList';
 import { Wallet, TrendingUp, TrendingDown, PiggyBank, PieChart as PieChartIcon, Clock } from 'lucide-react';
@@ -12,6 +13,7 @@ import { getCategoryName } from '@/utils/categoryHelpers';
 export default function Dashboard() {
   const { categories } = useCategories();
   const { theme } = useTheme();
+  const { format } = useCurrencyFormatter();
   const { t } = useTranslation();
   const stats = useMemo(() => {
     const income = mockTransactions
@@ -121,7 +123,7 @@ export default function Dashboard() {
                 ))}
               </Pie>
               <Tooltip 
-                formatter={(value: number) => `€${value.toFixed(2)}`}
+                formatter={(value: number) => format(value)}
                 contentStyle={{
                   backgroundColor: theme === 'dark' ? '#111827' : '#ffffff',
                   border: `2px solid ${theme === 'dark' ? '#4b5563' : '#d1d5db'}`,
