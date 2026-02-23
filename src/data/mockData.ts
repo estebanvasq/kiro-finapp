@@ -1,0 +1,120 @@
+import { Transaction, Category, Budget, User } from '@/types';
+
+export const mockUser: User = {
+  id: '1',
+  name: 'Usuario Demo',
+  email: 'demo@finanzas.com',
+};
+
+export const mockCategories: Category[] = [
+  { id: '1', name: 'Salary', translationKey: 'categories.salary', type: 'income', color: '#10b981', icon: 'Briefcase' },
+  { id: '2', name: 'Investments', translationKey: 'categories.investments', type: 'income', color: '#3b82f6', icon: 'TrendingUp' },
+  { id: '3', name: 'Food', translationKey: 'categories.food', type: 'expense', color: '#ef4444', icon: 'ShoppingCart' },
+  { id: '4', name: 'Transportation', translationKey: 'categories.transportation', type: 'expense', color: '#f59e0b', icon: 'Car' },
+  { id: '5', name: 'Housing', translationKey: 'categories.housing', type: 'expense', color: '#8b5cf6', icon: 'Home' },
+  { id: '6', name: 'Entertainment', translationKey: 'categories.entertainment', type: 'expense', color: '#ec4899', icon: 'Film' },
+  { id: '7', name: 'Health', translationKey: 'categories.health', type: 'expense', color: '#06b6d4', icon: 'Heart' },
+  { id: '8', name: 'Education', translationKey: 'categories.education', type: 'expense', color: '#14b8a6', icon: 'BookOpen' },
+];
+
+export const mockTransactions: Transaction[] = [
+  {
+    id: '1',
+    description: 'Salario mensual',
+    amount: 3500,
+    type: 'income',
+    category: 'Salary',
+    date: '2026-02-01',
+    createdAt: '2026-02-01T08:00:00Z',
+  },
+  {
+    id: '2',
+    description: 'Supermercado',
+    amount: 150,
+    type: 'expense',
+    category: 'Food',
+    date: '2026-02-03',
+    createdAt: '2026-02-03T10:30:00Z',
+  },
+  {
+    id: '3',
+    description: 'Gasolina',
+    amount: 60,
+    type: 'expense',
+    category: 'Transportation',
+    date: '2026-02-05',
+    createdAt: '2026-02-05T14:20:00Z',
+  },
+  {
+    id: '4',
+    description: 'Alquiler',
+    amount: 800,
+    type: 'expense',
+    category: 'Housing',
+    date: '2026-02-01',
+    createdAt: '2026-02-01T09:00:00Z',
+  },
+  {
+    id: '5',
+    description: 'Netflix',
+    amount: 15,
+    type: 'expense',
+    category: 'Entertainment',
+    date: '2026-02-10',
+    createdAt: '2026-02-10T12:00:00Z',
+  },
+  {
+    id: '6',
+    description: 'Restaurante',
+    amount: 45,
+    type: 'expense',
+    category: 'Food',
+    date: '2026-02-12',
+    createdAt: '2026-02-12T20:30:00Z',
+  },
+  {
+    id: '7',
+    description: 'Dividendos',
+    amount: 200,
+    type: 'income',
+    category: 'Investments',
+    date: '2026-02-15',
+    createdAt: '2026-02-15T10:00:00Z',
+  },
+  {
+    id: '8',
+    description: 'Farmacia',
+    amount: 35,
+    type: 'expense',
+    category: 'Health',
+    date: '2026-02-18',
+    createdAt: '2026-02-18T16:45:00Z',
+  },
+  {
+    id: '9',
+    description: 'Curso online',
+    amount: 99,
+    type: 'expense',
+    category: 'Education',
+    date: '2026-02-20',
+    createdAt: '2026-02-20T11:00:00Z',
+  },
+  {
+    id: '10',
+    description: 'Uber',
+    amount: 25,
+    type: 'expense',
+    category: 'Transportation',
+    date: '2026-02-22',
+    createdAt: '2026-02-22T19:15:00Z',
+  },
+];
+
+export const mockBudgets: Budget[] = [
+  { categoryId: '3', limit: 400, spent: 195, period: 'monthly' },
+  { categoryId: '4', limit: 200, spent: 85, period: 'monthly' },
+  { categoryId: '5', limit: 800, spent: 800, period: 'monthly' },
+  { categoryId: '6', limit: 100, spent: 15, period: 'monthly' },
+  { categoryId: '7', limit: 150, spent: 35, period: 'monthly' },
+  { categoryId: '8', limit: 200, spent: 99, period: 'monthly' },
+];
