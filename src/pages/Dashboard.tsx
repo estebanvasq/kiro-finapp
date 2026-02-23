@@ -123,13 +123,23 @@ export default function Dashboard() {
               <Tooltip 
                 formatter={(value: number) => `€${value.toFixed(2)}`}
                 contentStyle={{
-                  backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
-                  border: `1px solid ${theme === 'dark' ? '#374151' : '#e5e7eb'}`,
+                  backgroundColor: theme === 'dark' ? '#111827' : '#ffffff',
+                  border: `2px solid ${theme === 'dark' ? '#4b5563' : '#d1d5db'}`,
                   borderRadius: '0.5rem',
-                  color: theme === 'dark' ? '#f9fafb' : '#111827'
+                  color: theme === 'dark' ? '#ffffff' : '#111827',
+                  boxShadow: theme === 'dark' 
+                    ? '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                  padding: '12px 16px',
+                  fontWeight: '500'
                 }}
                 labelStyle={{
-                  color: theme === 'dark' ? '#f9fafb' : '#111827'
+                  color: theme === 'dark' ? '#ffffff' : '#111827',
+                  fontWeight: '600',
+                  marginBottom: '4px'
+                }}
+                itemStyle={{
+                  color: theme === 'dark' ? '#e5e7eb' : '#374151'
                 }}
               />
               <Legend 
