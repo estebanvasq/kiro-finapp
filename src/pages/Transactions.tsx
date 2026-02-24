@@ -120,7 +120,7 @@ export default function Transactions() {
                 <option value="all">{t('transactions.allCategories')}</option>
                 {availableCategories.map((category) => (
                   <option key={category.id} value={category.name}>
-                    {category.name}
+                    {category.translationKey ? t(category.translationKey) : category.name}
                   </option>
                 ))}
               </select>
